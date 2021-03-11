@@ -28,13 +28,14 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 *currently not applicable*
 
 ## Extension Settings
-*currently not applicable*
+* `auto--init--.maxSearchSize` : The maximum amount of lines to search for a ```__init__``` method (centered around the cursor)
 
 ## Known Issues
 *currently not applicable*
 
 ## Release Notes
-*currently not applicable*
+### 0.1.2
+Added and implemented a settings system
 
-### 1.0.0
+### 0.0.1
 Initial release of auto--init--
