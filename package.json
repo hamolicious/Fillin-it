@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "auto--init--.preFillFromArgs",
-        "title": "Prefill from args"
+        "title": "Fill init"
       }
     ]
   },
