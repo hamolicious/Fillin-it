@@ -14,6 +14,17 @@ class SomeClass:
 		self.arg3 = arg3
 ```
 
+## How to use
+Type out a class like so:
+```python
+class SomeClass:
+	def __init__(self, arg1, arg2, arg3):
+```
+and leave the cursor somewhere in the vicinity of the dunder method
+
+Then open the command pallete in VSCode and type "```Fill init```", hit enter and the class will be filled in... alternatively, you can asign a keybind to the command and use a keybind to fill in the class.
+
+
 ## Requirements
 *currently not applicable*
 
