@@ -1,7 +1,7 @@
 # auto--init--
 
 A VSCode extension that will automatically fills in the ```__init__()``` method using the provided arguments
-![GIF preview of the extension](images/preview.gif)
+![GIF preview of the extension](https://github.com/hamolicious/Auto-__init__/blob/master/images/preview.gif?raw=true)
 
 ## Features
 
