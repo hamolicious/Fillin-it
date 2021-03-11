@@ -1,4 +1,9 @@
 # auto__init__
+[![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
+[![Badge for rating for Visual Studio Code extension naereen.makefiles-support-for-vscode](https://vsmarketplacebadge.apphb.com/rating/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
+[![Badge for installs for Visual Studio Code extension naereen.makefiles-support-for-vscode](https://vsmarketplacebadge.apphb.com/installs/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
 
 A VSCode extension that will automatically fills in the ```__init__()``` method using the provided arguments
 ![GIF preview of the extension](https://github.com/hamolicious/Auto-__init__/blob/master/images/preview.gif?raw=true)
