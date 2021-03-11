@@ -5,36 +5,26 @@ A VSCode extension that will automatically fills in the ```__init__()``` method 
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Fills out the ```__init__()``` method with the passed in arguments
+```python
+class SomeClass:
+	def __init__(self, arg1, arg2, arg3):
+		self.arg1 = arg1
+		self.arg2 = arg2
+		self.arg3 = arg3
+```
 
 ## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+*currently not applicable*
 
 ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `auto__init__.enable`: enable/disable this extension
-* `auto__init__.thing`: set to `blah` to do something
+*currently not applicable*
 
 ## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+*currently not applicable*
 
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
+*currently not applicable*
 
 ### 1.0.0
 Initial release of auto--init--
