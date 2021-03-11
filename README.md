@@ -24,7 +24,6 @@ and leave the cursor somewhere in the vicinity of the dunder method
 
 Then open the command pallete in VSCode and type "```Fill init```", hit enter and the class will be filled in... alternatively, you can asign a keybind to the command and use a keybind to fill in the class.
 
-
 ## Requirements
 *currently not applicable*
 

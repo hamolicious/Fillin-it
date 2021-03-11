@@ -33,7 +33,17 @@
 				"command": "auto--init--.preFillFromArgs",
 				"title": "Fill init"
 			}
-		]
+		],
+		"configuration": {
+			"title": "Auto__init__",
+			"properties": {
+				"auto--init--.maxSearchSize": {
+					"type": "number",
+					"default": 10,
+					"description": "The maximum amount of lines to search for a __init__ method (centered around the cursor)"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",

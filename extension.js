@@ -5,7 +5,6 @@ const vscode = require('vscode');
  */
 function activate(context) {
 	let disposable = vscode.commands.registerCommand('auto--init--.preFillFromArgs', function () {
-
 		const editor = vscode.window.activeTextEditor;
 
 		if (editor) {
@@ -36,11 +35,12 @@ function searchForDunderInit(editor, activeLine) {
 	/*
 	Searches for the dunder init method
 	*/
+	const settings = vscode.workspace.getConfiguration('auto--init--');
 	const document = editor.document;
 
 	let increase = 0;
 	let dir = 1;
-	let maxSearchSize = 10; //TODO add to settings
+	let maxSearchSize = settings['maxSearchSize'];
 	while (true) {
 		dir *= -1;
 		increase++;
