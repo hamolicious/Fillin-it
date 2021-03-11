@@ -5,7 +5,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
 
-A VSCode extension that will automatically fills in the ```__init__()``` method using the provided arguments
+A VSCode extension that will automatically fill in the ```__init__()``` method using the provided arguments
 ![GIF preview of the extension](https://github.com/hamolicious/Auto-__init__/blob/master/images/preview.gif?raw=true)
 
 ## Features
