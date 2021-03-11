@@ -1,40 +1,54 @@
 {
-  "name": "auto--init--",
-  "displayName": "Auto__init__",
-  "description": "Automatically fills in the __init__ method using the provided arguments",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.54.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:auto--init--.preFillFromArgs"
-  ],
-  "main": "./extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "auto--init--.preFillFromArgs",
-        "title": "Fill init"
-      }
-    ]
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "node ./test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/glob": "^7.1.3",
-    "@types/mocha": "^8.0.4",
-    "@types/node": "^12.11.7",
-    "@types/vscode": "^1.54.0",
-    "eslint": "^7.19.0",
-    "glob": "^7.1.6",
-    "mocha": "^8.2.1",
-    "typescript": "^4.1.3",
-    "vscode-test": "^1.5.0"
-  }
+	"name": "auto--init--",
+	"displayName": "Auto__init__",
+	"icon": "images/icon.png",
+	"homepage": "https://github.com/hamolicious/Auto-__init__.git/blob/main/README.md",
+	"publisher": "Hamolicious",
+	"author": {
+		"name": "Hamolicious"
+	},
+	"description": "Automatically fills in the __init__ method using the provided arguments",
+	"version": "0.0.1",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"bugs": {
+		"url": "https://github.com/hamolicious/Auto-__init__.git/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hamolicious/Auto-__init__.git"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:auto--init--.preFillFromArgs"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "auto--init--.preFillFromArgs",
+				"title": "Fill init"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.54.0",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	}
 }
