@@ -36,7 +36,7 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 * `fillinit.maxSearchSize` : The maximum amount of lines to search for a ```__init__``` method (centered around the cursor)
 
 ## Known Issues
-* Indentation is incorrect when adding new lines
+* ~~Indentation is incorrect when adding new lines~~ **FIXED**
 
 ## Release Notes
 
