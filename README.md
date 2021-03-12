@@ -40,6 +40,9 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 
 ## Release Notes
 
+### 0.1.4
+Fixed broken indents
+
 ### 0.1.3
 Changed name to `Fillin' it` after the suggestion by reddit user [theoldreddituseraroo](https://www.reddit.com/user/theoldreddituseraroo/)
 
