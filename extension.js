@@ -72,8 +72,14 @@ function getArgs(lineText) {
 		self.arg2 = arg2
 		self.arg3 = arg3
 	*/
+
 	const re = /\(.+\)/;
-	const indentAmount = lineText.search(/\S/) + vscode.window.activeTextEditor.options.tabSize;
+	let indentAmount = lineText.search(/\S/) + vscode.window.activeTextEditor.options.tabSize;
+	// assumes that no-one will ever use single-spaced indents
+	// and if you happen to use single-spaced indents, you should not be allowed to use a computer
+	if (lineText.search(/\S/) == 1) {
+		indentAmount += vscode.window.activeTextEditor.options.tabSize-1;
+	}
 	lineText = lineText.match(re, '')[0].replace('(self, ', '').replace(')', '').split(', ');
 
 	let text = '';
