@@ -4,7 +4,7 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	let disposable = vscode.commands.registerCommand('auto--init--.preFillFromArgs', function () {
+	let disposable = vscode.commands.registerCommand('fillinit.preFillFromArgs', function () {
 		const editor = vscode.window.activeTextEditor;
 
 		if (editor) {
@@ -35,7 +35,7 @@ function searchForDunderInit(editor, activeLine) {
 	/*
 	Searches for the dunder init method
 	*/
-	const settings = vscode.workspace.getConfiguration('auto--init--');
+	const settings = vscode.workspace.getConfiguration('fillinit');
 	const document = editor.document;
 
 	let increase = 0;

@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "auto--init--" extension will be documented in this file.
 
+### 0.1.3
+Changed name to `Fillin' it` after the suggestion by reddit user [theoldreddituseraroo](https://www.reddit.com/user/theoldreddituseraroo/)
+
 ### 0.1.2
 Added and implemented a settings system
 

@@ -1,8 +1,8 @@
 {
-	"name": "autoinit",
-	"displayName": "Auto__init__",
+	"name": "fillinit",
+	"displayName": "Fillin' it",
 	"icon": "images/icon.png",
-	"homepage": "https://github.com/hamolicious/Auto-__init__.git/blob/main/README.md",
+	"homepage": "https://github.com/hamolicious/Fillin-it/blob/master/README.md",
 	"publisher": "Hamolicious",
 	"author": {
 		"name": "Hamolicious"
@@ -14,30 +14,30 @@
 		"vscode": "^1.54.0"
 	},
 	"bugs": {
-		"url": "https://github.com/hamolicious/Auto-__init__.git/issues"
+		"url": "https://github.com/hamolicious/Fillin-it/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hamolicious/Auto-__init__.git"
+		"url": "https://github.com/hamolicious/Fillin-it"
 	},
 	"categories": [
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:auto--init--.preFillFromArgs"
+		"onCommand:fillinit.preFillFromArgs"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "auto--init--.preFillFromArgs",
+				"command": "fillinit.preFillFromArgs",
 				"title": "Fill init"
 			}
 		],
 		"configuration": {
-			"title": "Auto__init__",
+			"title": "Fillin' it",
 			"properties": {
-				"auto--init--.maxSearchSize": {
+				"fillinit.maxSearchSize": {
 					"type": "number",
 					"default": 10,
 					"description": "The maximum amount of lines to search for a __init__ method (centered around the cursor)"

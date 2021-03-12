@@ -1,12 +1,12 @@
-# auto__init__
+# Fillin' it
+<!-- TODO Fix the badges to use the new extension page -->
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
-[![Badge for rating for Visual Studio Code extension naereen.makefiles-support-for-vscode](https://vsmarketplacebadge.apphb.com/rating/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
-[![Badge for installs for Visual Studio Code extension naereen.makefiles-support-for-vscode](https://vsmarketplacebadge.apphb.com/installs/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
+[![Badge for rating for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/rating/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
+[![Badge for installs for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/installs/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
-
 A VSCode extension that will automatically fill in the ```__init__()``` method using the provided arguments
-![GIF preview of the extension](https://github.com/hamolicious/Auto-__init__/blob/master/images/preview.gif?raw=true)
+![GIF preview of the extension](https://github.com/hamolicious/Fillin-it/blob/master/images/preview.gif?raw=true)
 
 ## Features
 
@@ -33,10 +33,13 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 *currently not applicable*
 
 ## Extension Settings
-* `auto--init--.maxSearchSize` : The maximum amount of lines to search for a ```__init__``` method (centered around the cursor)
+* `fillinit.maxSearchSize` : The maximum amount of lines to search for a ```__init__``` method (centered around the cursor)
 
 ## Known Issues
 * Indentation is incorrect when adding new lines
+
+### 0.1.3
+Changed name to `Fillin' it` after the suggestion by reddit user [theoldreddituseraroo](https://www.reddit.com/user/theoldreddituseraroo/)
 
 ## Release Notes
 ### 0.1.2
