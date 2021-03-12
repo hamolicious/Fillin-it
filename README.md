@@ -38,10 +38,11 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 ## Known Issues
 * Indentation is incorrect when adding new lines
 
+## Release Notes
+
 ### 0.1.3
 Changed name to `Fillin' it` after the suggestion by reddit user [theoldreddituseraroo](https://www.reddit.com/user/theoldreddituseraroo/)
 
-## Release Notes
 ### 0.1.2
 Added and implemented a settings system
 
