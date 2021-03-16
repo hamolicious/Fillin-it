@@ -5,7 +5,7 @@
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
 [![Badge for rating for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/rating/Hamolicious.fillinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.fillinit)
 [![Badge for installs for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/installs/Hamolicious.fillinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.fillinit)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+![maintained? yes boss!](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 
 A VSCode extension that will automatically fill in the ```__init__()``` method using the provided arguments
 ![GIF preview of the extension](https://github.com/hamolicious/Fillin-it/blob/master/images/preview.gif?raw=true)
