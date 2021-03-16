@@ -91,6 +91,12 @@ function getArgs(lineText) {
 		if (argument.includes('=')) {
 			argument = argument.split('=')[0]
 		}
+		if (!/^[a-zA-Z0-9_.-]*$/.test(argument)) {
+			validArg = false;
+		}
+		if (/^\d/.test(argument)) {
+			validArg = false;
+		}
 
 		if (validArg) {
 			console.log(argument);
