@@ -36,9 +36,15 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 * `fillinit.maxSearchSize` : The maximum amount of lines to search for a ```__init__``` method (centered around the cursor)
 
 ## Known Issues
-* Indentation is incorrect when adding new lines
+* Optional arguments containing lists are not parsed correctly i.e. `arg1=[255, 255, 255]`
 
 ## Release Notes
+
+### 0.2.4
+Added support for special arguments such as:
+* `*args`
+* `**kwargs`
+* `argument=True`
 
 ### 0.1.4
 Fixed broken indents

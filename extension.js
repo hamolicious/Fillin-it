@@ -84,7 +84,18 @@ function getArgs(lineText) {
 
 	let text = '';
 	lineText.forEach(argument => {
-		text += (' '.repeat(indentAmount)) + 'self.' + argument + ' = ' + argument + '\n';
+		let validArg = true;
+		if (argument.includes('*')) {
+			validArg = false;
+		}
+		if (argument.includes('=')) {
+			argument = argument.split('=')[0]
+		}
+
+		if (validArg) {
+			console.log(argument);
+			text += (' '.repeat(indentAmount)) + 'self.' + argument + ' = ' + argument + '\n';
+		}
 	});
 
 	return text;
