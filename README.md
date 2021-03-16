@@ -2,10 +2,9 @@
 **There is a new [market place page and download](https://marketplace.visualstudio.com/items?itemName=Hamolicious.fillinit)**
 
 
-<!-- TODO Fix the badges to use the new extension page -->
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
-[![Badge for rating for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/rating/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
-[![Badge for installs for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/installs/Hamolicious.autoinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.autoinit)
+[![Badge for rating for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/rating/Hamolicious.fillinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.fillinit)
+[![Badge for installs for Visual Studio Code extension Hamolicious.fillinit](https://vsmarketplacebadge.apphb.com/installs/Hamolicious.fillinit.svg)](https://marketplace.visualstudio.com/items?itemName=Hamolicious.fillinit)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
 A VSCode extension that will automatically fill in the ```__init__()``` method using the provided arguments
@@ -39,9 +38,14 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 * `fillinit.maxSearchSize` : The maximum amount of lines to search for a ```__init__``` method (centered around the cursor)
 
 ## Known Issues
-* Optional arguments containing lists are not parsed correctly i.e. `arg1=[255, 255, 255]`
+* ~~Optional arguments containing lists are not parsed correctly i.e. `arg1=[255, 255, 255]`~~
 
 ## Release Notes
+
+### 0.3.4
+Added support for list arguments such as:
+* `arg=[3, 5, 2]`
+* `arg=('Hello', 'World')`
 
 ### 0.2.4
 Added support for special arguments such as:
