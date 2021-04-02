@@ -91,15 +91,18 @@ function getArgs(lineText) {
 		if (argument.includes('=')) {
 			argument = argument.split('=')[0]
 		}
-		if (!/^[a-zA-Z0-9_.-]*$/.test(argument)) {
-			validArg = false;
+		if (argument.includes(':')) {
+			argument = argument.split(':')[0]
 		}
+		// I should have commented this... wtf does this regex do?!
+		// if (!/^[a-zA-Z0-9_.-]*$/.test(argument)) {
+		// 	validArg = false;
+		// }
 		if (/^\d/.test(argument)) {
 			validArg = false;
 		}
 
 		if (validArg) {
-			console.log(argument);
 			text += (' '.repeat(indentAmount)) + 'self.' + argument + ' = ' + argument + '\n';
 		}
 	});
