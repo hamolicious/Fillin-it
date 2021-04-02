@@ -42,6 +42,11 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 
 ## Release Notes
 
+### 0.4.4
+Added support for type hints:
+* `arg: str`
+* `arg: int`
+
 ### 0.3.4
 Added support for list arguments such as:
 * `arg=[3, 5, 2]`

@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "auto--init--" extension will be documented in this file.
 
+### 0.4.4
+Added support for type hints:
+* `arg: str`
+* `arg: int`
+
 ### 0.3.4
 Added support for list arguments such as:
 * `arg=[3, 5, 2]`
