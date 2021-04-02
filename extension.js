@@ -85,12 +85,16 @@ function getArgs(lineText) {
 	let text = '';
 	lineText.forEach(argument => {
 		let validArg = true;
+
+		// checks for *args or **kwargs parameters
 		if (argument.includes('*')) {
 			validArg = false;
 		}
+		// checks for optional parameters
 		if (argument.includes('=')) {
 			argument = argument.split('=')[0]
 		}
+		// checks for type hints in parameters
 		if (argument.includes(':')) {
 			argument = argument.split(':')[0]
 		}
@@ -98,10 +102,12 @@ function getArgs(lineText) {
 		// if (!/^[a-zA-Z0-9_.-]*$/.test(argument)) {
 		// 	validArg = false;
 		// }
+		// checks for digits in front of variables
 		if (/^\d/.test(argument)) {
 			validArg = false;
 		}
 
+		// adds a new line to the arguments in the for of ```self.var = var```
 		if (validArg) {
 			text += (' '.repeat(indentAmount)) + 'self.' + argument + ' = ' + argument + '\n';
 		}
