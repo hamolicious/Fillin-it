@@ -31,7 +31,11 @@ function activate(context) {
 			const lineContent = document.getText(new vscode.Range(activeLine, 0, activeLine, Infinity));
 			if (isConstructor(settings, lineContent).toString()) {
 				const args = getArgs(settings, lineContent);
-				const formattedArgs = formatArgs(settings, args);
+				const formattedArgs = formatArgs(settings, args, lineContent);
+
+				editor.edit(function (editBuilder) {
+					editBuilder.insert(new vscode.Position(activeLine+1, 0), formattedArgs);
+				});
 			}
 		}
 	});
@@ -85,14 +89,27 @@ function getArgs(settings, lineContent) {
 	return noConstructor.split(settings.separator);
 }
 
-function formatArg(settings, arg) {
-	return settings.fillSyntax.replaceAll(settings.arguments, arg.trim());
+function addIndent(lineContent) {
+	const indentUsing = vscode.workspace.getConfiguration("editor").get("insertSpaces");
+	const indentSize = vscode.workspace.getConfiguration("editor").get("tabSize");
+	const currentIndentLevel = Math.abs(lineContent.trim().length - lineContent.length)+1;
+
+	let indent = '';
+	for (let i = 0; i < currentIndentLevel; i++) {
+		indent += indentUsing ? ' '.repeat(indentSize) : '\t';
+	}
+
+	return indent;
 }
 
-function formatArgs(settings, args) {
+function formatArg(settings, arg, lineContent) {
+	return addIndent(lineContent) + settings.fillSyntax.replaceAll(settings.arguments, arg.trim());
+}
+
+function formatArgs(settings, args, lineContent) {
 	let formattedArgs = '';
 	for (let i = 0; i < args.length; i++) {
-		formattedArgs += formatArg(settings, args[i]) + '\n';
+		formattedArgs += formatArg(settings, args[i], lineContent) + '\n';
 	}
 	return formattedArgs;
 }
