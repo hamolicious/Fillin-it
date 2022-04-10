@@ -54,7 +54,8 @@
 				},
 				"fillinit.LanguageConfigs":{
 					"python": {
-						"constructor": "def __init__(self, ",
+						"constructorStart": "def __init__(self, ",
+						"constructorEnd": "):",
 						"arguments": "arg",
 						"separator": ", ",
 						"fillSyntax": "self.arg = arg"

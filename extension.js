@@ -25,17 +25,21 @@ function activate(context) {
 
 		if (editor) {
 			const settings = loadLanguageConfig();
+			if (!settings) { return; }
 			const document = editor.document;
 			const activeLine = editor.selection.active.line;
 
 			const lineContent = document.getText(new vscode.Range(activeLine, 0, activeLine, Infinity));
-			if (isConstructor(settings, lineContent).toString()) {
+			if (isConstructor(settings, lineContent)) {
 				const args = getArgs(settings, lineContent);
 				const formattedArgs = formatArgs(settings, args, lineContent);
 
 				editor.edit(function (editBuilder) {
 					editBuilder.insert(new vscode.Position(activeLine+1, 0), formattedArgs);
 				});
+			} else {
+				vscode.window.showErrorMessage('Not a constructor');
+				return;
 			}
 		}
 	});
@@ -73,11 +77,12 @@ function loadLanguageConfig() {
 		return settings[languageId];
 	} else {
 		vscode.window.showErrorMessage('No configuration found for ' + languageId);
+		return null;
 	}
 }
 
 function isConstructor(settings, lineContent) {
-	return lineContent.includes(settings.constructor)
+	return lineContent.includes(settings.constructorStart)
 }
 
 function getArgs(settings, lineContent) {
