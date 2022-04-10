@@ -25,7 +25,8 @@
 	],
 	"activationEvents": [
 		"onCommand:fillinit.preFillFromArgs",
-		"onCommand:fillinit.__secretDebugCommand"
+		"onCommand:fillinit.__secretDebugCommand",
+		"onCommand:fillinit.getLanguageID"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -37,6 +38,10 @@
 			{
 				"command": "fillinit.__secretDebugCommand",
 				"title": "Fill init: __Debug"
+			},
+			{
+				"command": "fillinit.getLanguageID",
+				"title": "Fill init: Get Language ID"
 			}
 		],
 		"configuration": {

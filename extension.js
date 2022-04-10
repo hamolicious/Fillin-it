@@ -37,6 +37,25 @@ function activate(context) {
 		}
 	});
 	context.subscriptions.push(debugCommand);
+
+	let getLanguageIDCommand = vscode.commands.registerCommand("fillinit.getLanguageID", function () {
+      const editor = vscode.window.activeTextEditor;
+
+      if (editor) {
+        vscode.window.showInformationMessage(
+          "Language ID: " + getExtensionType(),
+			"Copy",
+			"OK"
+        ).then(function(selection) {
+			if (selection === "Copy") {
+				vscode.env.clipboard.writeText(getExtensionType());
+			}
+		});
+      }
+    }
+  );
+  context.subscriptions.push(getLanguageIDCommand);
+
 }
 
 function deactivate() {}
