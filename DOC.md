@@ -6,7 +6,7 @@ Language Settings Files
 
 #### Python
 ```json
-"py": {
+"python": {
 	"constructor" : "def __init__(self, ",
 	"arguments" : "arg",
 	"separator" : ", ",
@@ -15,7 +15,7 @@ Language Settings Files
 ```
 #### Ruby
 ```json
-"rb": {
+"ruby": {
 	"constructor" : "def initialize(",
 	"arguments" : "arg",
 	"separator" : ", ",
@@ -24,7 +24,7 @@ Language Settings Files
 ```
 #### JavaScript
 ```json
-"js": {
+"javascript": {
 	"constructor" : "constructor(",
 	"arguments" : "arg",
 	"separator" : ", ",
@@ -34,7 +34,7 @@ Language Settings Files
 
 # Explanation
 ```json
-"py": { // filename extension to look for
+"python": { // language id (get using `Fill init: Get Language Id`)
 	"constructor" : "def __init__(self, ", // defines the start of constructor (also the search term)
 	"arguments" : "arg", // specifies how arguments are defined, allows for wildcards
 	"separator" : ", ", // defines how to separate the args
@@ -42,7 +42,7 @@ Language Settings Files
 }
 ```
 ```json
-"cpp": { // filename extension to look for
+"cpp": { // language id (get using `Fill init: Get Language Id`)
 	"constructor" : "ClassName(", // defines the start of constructor (also the search term)
 	"arguments" : "* arg_", // specifies how arguments are defined, allows for wildcards
 	"separator" : ", ", // defines how to separate the args
