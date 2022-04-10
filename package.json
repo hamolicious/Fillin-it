@@ -24,14 +24,19 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:fillinit.preFillFromArgs"
+		"onCommand:fillinit.preFillFromArgs",
+		"onCommand:fillinit.__secretDebugCommand"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "fillinit.preFillFromArgs",
-				"title": "Fill init"
+				"title": "Fill init: Fill constructor"
+			},
+			{
+				"command": "fillinit.__secretDebugCommand",
+				"title": "Fill init: __Debug"
 			}
 		],
 		"configuration": {

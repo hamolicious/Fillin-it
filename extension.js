@@ -4,7 +4,7 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	let disposable = vscode.commands.registerCommand('fillinit.preFillFromArgs', function () {
+	let fillinitCommand = vscode.commands.registerCommand('fillinit.preFillFromArgs', function () {
 		const editor = vscode.window.activeTextEditor;
 
 		if (editor) {
@@ -26,10 +26,24 @@ function activate(context) {
 			});
 		}
 	});
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(fillinitCommand);
+
+
+	let debugCommand = vscode.commands.registerCommand('fillinit.__secretDebugCommand', function () {
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			vscode.window.showErrorMessage(getExtensionType());
+		}
+	});
+	context.subscriptions.push(debugCommand);
 }
 
 function deactivate() {}
+
+function getExtensionType() {
+	return vscode.window.activeTextEditor.document.languageId;
+}
 
 function searchForDunderInit(editor, activeLine) {
 	/*
