@@ -4,39 +4,32 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+	// TEMPOARY
+	let debugCommand = vscode.commands.registerCommand(
+    "fillinit.__secretDebugCommand",
+    function () {
+      const editor = vscode.window.activeTextEditor;
+
+      if (editor) {
+        vscode.window.showErrorMessage(getExtensionType());
+      }
+    }
+    );
+    context.subscriptions.push(debugCommand);
+
+
+
+
 	let fillinitCommand = vscode.commands.registerCommand('fillinit.preFillFromArgs', function () {
 		const editor = vscode.window.activeTextEditor;
 
 		if (editor) {
+			const settings = loadLanguageConfig();
 			const document = editor.document;
-
-			const currentLine = editor.selection.active.line;
-			const viewRange = searchForDunderInit(editor, currentLine);
-			if (!viewRange) {
-				vscode.window.showErrorMessage('No __init__ method found');
-				return;
-			}
-			const editRange = new vscode.Range(viewRange.start.line+1, 0, viewRange.start.line+1, Infinity);
-
-			const classLineText = document.getText(viewRange);
-
-			const edit = getArgs(classLineText);
-			editor.edit(editBuilder => {
-				editBuilder.replace(editRange, edit);
-			});
+			const activeLine = editor.selection.active.line;
 		}
 	});
 	context.subscriptions.push(fillinitCommand);
-
-
-	let debugCommand = vscode.commands.registerCommand('fillinit.__secretDebugCommand', function () {
-		const editor = vscode.window.activeTextEditor;
-
-		if (editor) {
-			vscode.window.showErrorMessage(getExtensionType());
-		}
-	});
-	context.subscriptions.push(debugCommand);
 
 	let getLanguageIDCommand = vscode.commands.registerCommand("fillinit.getLanguageID", function () {
       const editor = vscode.window.activeTextEditor;
@@ -52,10 +45,8 @@ function activate(context) {
 			}
 		});
       }
-    }
-  );
-  context.subscriptions.push(getLanguageIDCommand);
-
+    });
+    context.subscriptions.push(getLanguageIDCommand);
 }
 
 function deactivate() {}
@@ -63,6 +54,18 @@ function deactivate() {}
 function getExtensionType() {
 	return vscode.window.activeTextEditor.document.languageId;
 }
+
+function loadLanguageConfig() {
+	const languageId = getExtensionType();
+	const settings = vscode.workspace.getConfiguration("fillinit.LanguageConfigs");
+
+	if (settings[languageId]) {
+		return settings[languageId];
+	} else {
+		vscode.window.showErrorMessage('No configuration found for ' + languageId);
+	}
+}
+
 
 function searchForDunderInit(editor, activeLine) {
 	/*
