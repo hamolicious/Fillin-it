@@ -27,6 +27,12 @@ function activate(context) {
 			const settings = loadLanguageConfig();
 			const document = editor.document;
 			const activeLine = editor.selection.active.line;
+
+			const lineContent = document.getText(new vscode.Range(activeLine, 0, activeLine, Infinity));
+			if (isConstructor(settings, lineContent).toString()) {
+				const args = getArgs(settings, lineContent);
+				const formattedArgs = formatArgs(settings, args);
+			}
 		}
 	});
 	context.subscriptions.push(fillinitCommand);
@@ -66,90 +72,29 @@ function loadLanguageConfig() {
 	}
 }
 
-
-function searchForDunderInit(editor, activeLine) {
-	/*
-	Searches for the dunder init method
-	*/
-	const settings = vscode.workspace.getConfiguration('fillinit');
-	const document = editor.document;
-
-	let increase = 0;
-	let dir = 1;
-	let maxSearchSize = settings['maxSearchSize'];
-	while (true) {
-		dir *= -1;
-		increase++;
-
-		const checkRange = new vscode.Range(activeLine, 0, activeLine, Infinity);
-		const checkText = document.getText(checkRange);
-
-		if (checkText.includes('__init__')) {
-			return new vscode.Range(activeLine, 0, activeLine, Infinity);;
-		} else {
-			activeLine += dir * increase;
-		}
-
-		if (increase > maxSearchSize) {
-			return null;
-		}
-
-	}
-
+function isConstructor(settings, lineContent) {
+	return lineContent.includes(settings.constructor)
 }
 
-function getArgs(lineText) {
+function getArgs(settings, lineContent) {
 	/*
-	Creates and indents the arguments inside of the dunder init method
-	```    def __init__(self, arg1, arg2, arg3):```
-
-	Returns:
-		self.arg1 = arg1
-		self.arg2 = arg2
-		self.arg3 = arg3
+	Returns the arguments of the constructor
 	*/
+	const args = [];
+	const noConstructor = lineContent.replace(settings.constructorStart, '').replace(settings.constructorEnd, '');
+	return noConstructor.split(settings.separator);
+}
 
-	const re = /\(.+\)/;
-	let indentAmount = lineText.search(/\S/) + vscode.window.activeTextEditor.options.tabSize;
-	// assumes that no-one will ever use single-spaced indents
-	// and if you happen to use single-spaced indents, you should not be allowed to use a computer
-	if (lineText.search(/\S/) == 1) {
-		indentAmount += vscode.window.activeTextEditor.options.tabSize-1;
+function formatArg(settings, arg) {
+	return settings.fillSyntax.replaceAll(settings.arguments, arg.trim());
+}
+
+function formatArgs(settings, args) {
+	let formattedArgs = '';
+	for (let i = 0; i < args.length; i++) {
+		formattedArgs += formatArg(settings, args[i]) + '\n';
 	}
-	lineText = lineText.match(re, '')[0].replace('(self, ', '').replace(')', '').split(', ');
-
-	let text = '';
-	lineText.forEach(argument => {
-		let validArg = true;
-
-		// checks for *args or **kwargs parameters
-		if (argument.includes('*')) {
-			validArg = false;
-		}
-		// checks for optional parameters
-		if (argument.includes('=')) {
-			argument = argument.split('=')[0]
-		}
-		// checks for type hints in parameters
-		if (argument.includes(':')) {
-			argument = argument.split(':')[0]
-		}
-		// I should have commented this... wtf does this regex do?!
-		// if (!/^[a-zA-Z0-9_.-]*$/.test(argument)) {
-		// 	validArg = false;
-		// }
-		// checks for digits in front of variables
-		if (/^\d/.test(argument)) {
-			validArg = false;
-		}
-
-		// adds a new line to the arguments in the for of ```self.var = var```
-		if (validArg) {
-			text += (' '.repeat(indentAmount)) + 'self.' + argument + ' = ' + argument + '\n';
-		}
-	});
-
-	return text;
+	return formattedArgs;
 }
 
 module.exports = {
