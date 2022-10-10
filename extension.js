@@ -70,9 +70,9 @@ function paramStringBuilder(paramName, indentAmount) {
 	fix and take care of all the possible problems of the world :)
 	*/
 	const settings = vscode.workspace.getConfiguration('fillinit');
-	let result = ""
 	let typeHint = ""
 
+	// trimming * and ** in args, kwargs as they are not needed
 	paramName = paramName.trim().replace(/^\**/, "")
 
 	// checking if there is a default param value as we don't need it
@@ -118,31 +118,6 @@ function getArgs(lineText) {
 
 	let text = '';
 	lineText.forEach(argument => {
-		let validArg = true;
-
-		
-		// // checks for *args or **kwargs parameters
-		// if (argument.includes('*')) {
-		// 	validArg = false;
-		// }
-		// // checks for optional parameters
-		// if (argument.includes('=')) {
-		// 	argument = argument.split('=')[0]
-		// }
-		// // checks for type hints in parameters
-		// if (argument.includes(':')) {
-		// 	argument = argument.split(':')[0]
-		// }
-		// // I should have commented this... wtf does this regex do?!
-		// // if (!/^[a-zA-Z0-9_.-]*$/.test(argument)) {
-		// // 	validArg = false;
-		// // }
-		// // checks for digits in front of variables
-		// if (/^\d/.test(argument)) {
-		// 	validArg = false;
-		// }
-
-		// adds a new line to the arguments in the for of ```self.var = var```
 		text += paramStringBuilder(argument, indentAmount)
 	});
 
