@@ -62,7 +62,7 @@ function searchForDunderInit(editor, activeLine) {
 
 }
 
-function paramStringBuilder(paramName, indentAmount) {
+function paramStringBuilder(paramName, indentAmount, selfName = "self") {
 	/*
 	Parse the argument (in that case python argument) and build self parameter initialization string
 	So far it checks for type hints, default values.
@@ -86,13 +86,34 @@ function paramStringBuilder(paramName, indentAmount) {
 		paramName = paramName.trim()
 		typeHint = typeHint.trim()
 		if (settings.includeTypeHints) {
-			return `${' '.repeat(indentAmount)}self.${paramName}: ${typeHint} = ${paramName}\n`
+			return `${' '.repeat(indentAmount)}${selfName}.${paramName}: ${typeHint} = ${paramName}\n`
 		}
 	}
-	return `${' '.repeat(indentAmount)}self.${paramName} = ${paramName}\n`
-	
+	return `${' '.repeat(indentAmount)}${selfName}.${paramName} = ${paramName}\n`
+}
 
+function parseInitParamString(_str) {
+	const params = [];
+	let position_from = 0;
+	let bracket_counter = 0;
 
+	for (var cur_pos = 0; cur_pos < _str.length; cur_pos++) {
+		if ("[(".includes(_str[cur_pos])) {
+			bracket_counter += 1;
+			continue;
+		}
+		if (")]".includes(_str[cur_pos])) {
+			bracket_counter -= 1;
+			continue;
+		}
+		if (_str[cur_pos] == "," && bracket_counter==0) {
+			params.push(_str.substring(position_from, cur_pos));
+			position_from = cur_pos + 1;
+		}
+		continue;
+	}
+	params.push(_str.substring(position_from, _str.length));
+	return params.map(item => item.trim())
 
 }
 
@@ -107,18 +128,19 @@ function getArgs(lineText) {
 		self.arg3 = arg3
 	*/
 
-	const re = /\(.+\)/;
+	const re = /\((.+)\)/;
 	let indentAmount = lineText.search(/\S/) + vscode.window.activeTextEditor.options.tabSize;
 	// assumes that no-one will ever use single-spaced indents
 	// and if you happen to use single-spaced indents, you should not be allowed to use a computer
 	if (lineText.search(/\S/) == 1) {
 		indentAmount += vscode.window.activeTextEditor.options.tabSize-1;
 	}
-	lineText = lineText.match(re, '')[0].replace('(self, ', '').replace(')', '').split(', ');
+	lineText = lineText.match(re)[1];
+	lineText = parseInitParamString(lineText);
 
 	let text = '';
 	lineText.forEach(argument => {
-		text += paramStringBuilder(argument, indentAmount)
+		text += paramStringBuilder(argument, indentAmount, lineText[0]);
 	});
 
 	return text;
