@@ -98,20 +98,24 @@ function parseInitParamString(_str) {
 	let bracket_counter = 0;
 
 	for (var cur_pos = 0; cur_pos < _str.length; cur_pos++) {
-		if ("[(".includes(_str[cur_pos])) {
+		//check if there is any opening brackets for type hints, if so then increase bracket counter so i can skip the "wrong comma"
+		if ("[(".includes(_str[cur_pos])) {  
 			bracket_counter += 1;
 			continue;
 		}
+		// check if there is any closing bracket for type hints, if so then decrease bracket counter so i am closer to the right comma
 		if (")]".includes(_str[cur_pos])) {
 			bracket_counter -= 1;
 			continue;
 		}
+		//finally check if this comma is a final argument comma separator, not some inner from type hint
 		if (_str[cur_pos] == "," && bracket_counter==0) {
 			params.push(_str.substring(position_from, cur_pos));
 			position_from = cur_pos + 1;
 		}
 		continue;
 	}
+	// adding the last argument as there is no comma at the end
 	params.push(_str.substring(position_from, _str.length));
 	return params.map(item => item.trim())
 
