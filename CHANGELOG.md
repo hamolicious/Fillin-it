@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to the "auto--init--" extension will be documented in this file.
 
+### 0.5.4
+As of PR [5](https://github.com/hamolicious/Fillin-it/pull/5) and [6](https://github.com/hamolicious/Fillin-it/pull/6):
+* Added support for more complex type hints:
+  * `arg: Callable[[int], str]`
+  * `dict[str, int]`
+* Fixed inner brackets' commas being recognised as outer argument commas
+* Optional type hint transference to `self.`'s
+
 ### 0.4.4
 Added support for type hints:
 * `arg: str`
