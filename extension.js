@@ -62,6 +62,40 @@ function searchForDunderInit(editor, activeLine) {
 
 }
 
+function paramStringBuilder(paramName, indentAmount) {
+	/*
+	Parse the argument (in that case python argument) and build self parameter initialization string
+	So far it checks for type hints, default values.
+	Naming convention and linting is left for python server (e.g. Pylance) responsible as we do not want to 
+	fix and take care of all the possible problems of the world :)
+	*/
+	const settings = vscode.workspace.getConfiguration('fillinit');
+	let typeHint = ""
+
+	// trimming * and ** in args, kwargs as they are not needed
+	paramName = paramName.trim().replace(/^\**/, "")
+
+	// checking if there is a default param value as we don't need it
+	if (paramName.includes("=")) {
+		paramName = (paramName.split("=")[0])
+	}
+
+	// check if there is a type hinting included
+	if (paramName.includes(":")) {
+		[paramName, typeHint] = paramName.split(":")
+		paramName = paramName.trim()
+		typeHint = typeHint.trim()
+		if (settings.includeTypeHints) {
+			return `${' '.repeat(indentAmount)}self.${paramName}: ${typeHint} = ${paramName}\n`
+		}
+	}
+	return `${' '.repeat(indentAmount)}self.${paramName} = ${paramName}\n`
+	
+
+
+
+}
+
 function getArgs(lineText) {
 	/*
 	Creates and indents the arguments inside of the dunder init method
@@ -84,33 +118,7 @@ function getArgs(lineText) {
 
 	let text = '';
 	lineText.forEach(argument => {
-		let validArg = true;
-
-		// checks for *args or **kwargs parameters
-		if (argument.includes('*')) {
-			validArg = false;
-		}
-		// checks for optional parameters
-		if (argument.includes('=')) {
-			argument = argument.split('=')[0]
-		}
-		// checks for type hints in parameters
-		if (argument.includes(':')) {
-			argument = argument.split(':')[0]
-		}
-		// I should have commented this... wtf does this regex do?!
-		// if (!/^[a-zA-Z0-9_.-]*$/.test(argument)) {
-		// 	validArg = false;
-		// }
-		// checks for digits in front of variables
-		if (/^\d/.test(argument)) {
-			validArg = false;
-		}
-
-		// adds a new line to the arguments in the for of ```self.var = var```
-		if (validArg) {
-			text += (' '.repeat(indentAmount)) + 'self.' + argument + ' = ' + argument + '\n';
-		}
+		text += paramStringBuilder(argument, indentAmount)
 	});
 
 	return text;

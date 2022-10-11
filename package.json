@@ -41,6 +41,11 @@
 					"type": "number",
 					"default": 10,
 					"description": "The maximum amount of lines to search for a __init__ method (centered around the cursor)"
+				},
+				"fillinit.includeTypeHints": {
+					"type": "boolean",
+					"default": true,
+					"description": "Wheter to include type hints in self.* variables declaration in __init__ method"
 				}
 			}
 		}
