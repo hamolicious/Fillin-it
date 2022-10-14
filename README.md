@@ -40,3 +40,5 @@ Then open the command pallete in VSCode and type "```Fill init```", hit enter an
 ## Known Issues
 * ~~Optional arguments containing lists are not parsed correctly i.e. `arg1=[255, 255, 255]`~~
 
+## TODO
+- [ ] Add a testing framework and write unit tests
