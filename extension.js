@@ -143,9 +143,10 @@ function getArgs(lineText) {
 	lineText = parseInitParamString(lineText);
 
 	let text = '';
-	lineText.forEach(argument => {
-		text += paramStringBuilder(argument, indentAmount, lineText[0]);
-	});
+	// starting from index 1 to ommit self (the very first parameter)
+	for (let i = 1; i < lineText.length; i++) {
+		text += paramStringBuilder(lineText[i], indentAmount, lineText[0]);
+	}
 
 	return text;
 }
