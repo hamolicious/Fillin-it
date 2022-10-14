@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "auto--init--" extension will be documented in this file.
 
+### 0.5.5
+Fixed the inclusion of `self.self`
+
 ### 0.5.4
 As of PR [5](https://github.com/hamolicious/Fillin-it/pull/5) and [6](https://github.com/hamolicious/Fillin-it/pull/6):
 * Added support for more complex type hints:
